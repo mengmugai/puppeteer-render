@@ -17,7 +17,9 @@
 > docker run -d -p 8080:3000 --name render miclon/puppeteer-render -->
 
 - 本地运行
+
 建议使用node 14.19.0
+
 你首先需要拉取此项目。
   - 安装依赖
   > npm install
@@ -66,12 +68,15 @@ POST http://127.0.0.1:3000/render
 ```
 此为源文档接口  不包含 获取cookies  但是本项目支持
 请求：
+```
 {
     "url": "https://www.douyin.com",
     "waitUntil": "networkidle2",
     "type": "cookies"
 }
+```
 响应：
+```
 [
     {
         "name": "msToken",
@@ -103,6 +108,7 @@ POST http://127.0.0.1:3000/render
         "sourcePort": 443
     }
     ...
+```
 完整的API接口请查看：[接口文档](https://www.apifox.cn/apidoc/shared-6dcc2010-6913-4fe0-88a3-333791d80548)
 
 ## fuck模式
