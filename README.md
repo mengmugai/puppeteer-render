@@ -5,23 +5,24 @@
 
 ## 功能 features
 
-- [x] 支持三种渲染模式的API接口（HTML、PDF、screenshots)
+- [x] 支持三种渲染模式的API接口（HTML、PDF、screenshots,)  cookies 本分支单独加的
 - [x] 支持随机动态user-agent
 - [x] 支持在fuck模式下隐藏浏览器特征
 - [x] 支持自定义cookies、自定义headers、自定义代理proxy
 
 ## 运行
 
-- docker
+<!-- - docker
 如果你想直接使用本项目，可以直接docker运行。
-> docker run -d -p 8080:3000 --name render miclon/puppeteer-render
+> docker run -d -p 8080:3000 --name render miclon/puppeteer-render -->
 
 - 本地运行
+建议使用node 14.19.0
 你首先需要拉取此项目。
   - 安装依赖
   > npm install
   - 执行
-  > npm run dev
+  > npm run start
 
 
 ## API
@@ -63,6 +64,45 @@ POST http://127.0.0.1:3000/render
   }
 }
 ```
+此为源文档接口  不包含 获取cookies  但是本项目支持
+请求：
+{
+    "url": "https://www.douyin.com",
+    "waitUntil": "networkidle2",
+    "type": "cookies"
+}
+响应：
+[
+    {
+        "name": "msToken",
+        "value": "xxxxxxxxxxxxx",
+        "domain": ".douyin.com",
+        "path": "/",
+        "expires": 1677226464.074578,
+        "size": 139,
+        "httpOnly": false,
+        "secure": true,
+        "session": false,
+        "sameSite": "None",
+        "sameParty": false,
+        "sourceScheme": "Secure",
+        "sourcePort": 443
+    },
+    {
+        "name": "tt_scid",
+        "value": "xxxxxxxxxxxxx",
+        "domain": "www.douyin.com",
+        "path": "/",
+        "expires": 1677226462,
+        "size": 75,
+        "httpOnly": false,
+        "secure": false,
+        "session": false,
+        "sameParty": false,
+        "sourceScheme": "Secure",
+        "sourcePort": 443
+    }
+    ...
 完整的API接口请查看：[接口文档](https://www.apifox.cn/apidoc/shared-6dcc2010-6913-4fe0-88a3-333791d80548)
 
 ## fuck模式
