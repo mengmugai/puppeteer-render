@@ -53,6 +53,11 @@ const renderHandler = async(req, res, next) => {
                     })
                     .send(buffer)
                 break
+            case 'cookies':
+                console.log(11111)
+                const cookies = await renderer.cookies(url, options)
+                res.status(200).send(cookies)
+                break
             default:
                 const html = await renderer.html(url, options)
                 res.status(200).send(html)

@@ -21,6 +21,16 @@ class Renderer {
     }
   }
 
+  async cookies(url, options = {}) {
+    let page = null
+    try {
+      page = await this.createPage(url, options)
+      return await page.cookies()
+    } finally {
+      await this.closePage(page)
+    }
+  }
+
   async pdf(url, options = {}) {
     let page = null
     try {
